@@ -1,37 +1,34 @@
 # User Ordering System Component Diagram
 ----
 
+## 使用場景
+- 使用者通過手機或網頁端點餐、查詢訂單及外送狀態。
+- 系統需快速響應使用者操作，確保訂單資料準確送出。
+
+
 ![](./image/README/c4_user_ordering_systerm_component.png)
 
-##  前端容器 Frontend
+##  使用者點餐系統 (User Ordering System)
 
 | 元件名稱 |	功能說明 |
 | ----- | -------- | 
-| 訂單建立元件 Order Creation Component |	提供使用者點餐介面，讓使用者選擇餐點並送出訂單 |
-| 訂單狀態瀏覽元件 Order Status Viewer |	顯示訂單目前狀態及歷史訂單查詢 |
-| 使用者認證元件 User Authentication Component |	管理使用者登入、登出及身份驗證 |
+| 點餐介面 Ordering UI |	提供顧客瀏覽菜單、選擇餐點、加入購物車及提交訂單的操作介面 |
+| 訂單查詢元件 Order Query Component |	讓顧客能查詢歷史訂單與當前訂單狀態，提供訂單詳情與外送進度資訊 |
+| 訂單送出元件 Order Submission Component |	負責將顧客訂單資料封裝並送至後端訂單核心系統，確保資料正確傳遞 |
+| 訂單狀態同步元件 Order Status Sync |	即時接收訂單狀態更新，並將狀態變更反映於使用者介面 |
+| 通知推播元件 Notification Push |	推送訂單狀態變更、備餐完成及外送員位置更新等即時通知給使用者 |
 
-## API Gateway
 
-| 元件名稱 |	功能說明 |
-| ----- | -------- | 
-| 請求接收元件 Request Receiver |	接收前端發出的所有API請求 |
-| 請求路由元件 Request Router | 根據API路由將請求轉發至點餐系統後端服務 |
-| 認證授權元件 Authentication & Authorization |	驗證使用者身份並授權存取API |
-| 請求轉換元件 Request Transformer | 處理API請求資料格式轉換 |
-| 錯誤處理元件 Error Handler |	統一處理API錯誤回應 |
+## 目標
+- 提供流暢且直覺的點餐體驗，減少下單阻礙。
+- 確保訂單資料準確無誤地送達訂單核心系統。
+- 即時反映訂單狀態與配送進度，提升用戶滿意度。
+- 支援高併發請求，尤其在用餐高峰期。
 
-## 點餐核心服務容器 Ordering Core Service
-
-| 元件名稱 |	功能說明 |
-| ----- | -------- | 
-| 訂單管理元件 Order Management Component |	負責訂單資料的建立、更新與查詢 |
-| 菜單管理元件 Menu Management Component | 管理菜單資料，包括餐點資訊及價格 |
-| 支付處理元件 Payment Processor |		處理訂單付款流程與支付狀態 |
-
-## 通知服務容器 Notification Service
-
-| 元件名稱 |	功能說明 |
-| ----- | -------- | 
-| 推播通知元件 Push Notification Sender |	發送訂單狀態更新通知給使用者 |
-| 簡訊通知元件 SMS Notification Sender | 透過簡訊發送訂單相關通知 |
+### 建議 SLO
+| 指標 |	目標值 |	備註 |
+| ----- | -------- | -------- | 
+| 訂單送出成功率 |	≥ 99.9% |	訂單成功送達後端核心系統 |
+| 訂單查詢回應時間 |	95% 請求 < 300ms |	保持良好互動體驗 |
+| 訂單狀態更新延遲 |	95% 狀態更新 < 2秒 |	即時反映訂單狀態 |
+| 系統可用率 |	≥ 99.9%	保持系統穩定運行 |

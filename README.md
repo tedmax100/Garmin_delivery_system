@@ -16,11 +16,6 @@ Delivery System Design
 表示。
 ```
 
-| 名稱  | 數量 |
-| ----- | -------- |
-| 蘋果 | 3        |
-| 雞蛋 | 12       |
-
 # 根據 C4 Model 梳理
 ## System Context Diagram
 1. 角色（Person）
