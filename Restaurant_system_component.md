@@ -5,6 +5,8 @@
 - 根據訂單內容安排備餐排程，追蹤備餐進度並更新訂單狀態。
 - 協助廚房有效管理訂單備餐流程。
 
+![](./image/README/c4_restaurant_system_component.png)
+
 ## 訂單接收服務 (Order Receiving Service)
 負責根據訂單內容與廚房資源安排備餐排程，追蹤備餐進度並即時更新訂單狀態，協助廚房有效管理訂單備餐流程。
 
